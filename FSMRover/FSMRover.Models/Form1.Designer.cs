@@ -1,4 +1,4 @@
-﻿namespace FSMRover
+﻿namespace FSMRover.Models
 {
     partial class Form1
     {

@@ -14,13 +14,14 @@ namespace FSMRover
         private static readonly Point FixModulesPoint = new Point(541, 52);
         private static readonly Point CollectSoilPoint = new Point(294, 148);
         private static readonly Point SendDataPoint = new Point(27, 182);
-        private static readonly Point MakePhotoPoint = new Point(414, 407);
-
-
+        private static readonly Point MakePhotoPoint = new Point(543, 411);
+        
         private readonly IRover _rover;
+        private bool _isRunning;
 
         public MainWindow(IRover rover)
         {
+            _isRunning = false;
             _rover = rover ?? throw new ArgumentNullException(nameof(rover));
 
             InitializeComponent();
@@ -32,15 +33,24 @@ namespace FSMRover
 
         private async void StartButtonClicked(object sender, EventArgs e)
         {
-            startButton.Enabled = false;
-            await StartProcessing();
+            if (_isRunning == false)
+            {
+                _isRunning = true;
+                startButton.Text = "Стоп";
+                await StartProcessing(); 
+            }
+            else
+            {
+                _isRunning = false;
+                startButton.Text = "Старт";
+            }
         }
 
         private async Task StartProcessing()
         {
             await Task.Run(() =>
             {
-                while (true)
+                while (_isRunning)
                 {
                     var state = _rover.Update();
 
@@ -95,7 +105,7 @@ namespace FSMRover
             
             while (distanceY != 0)
             {
-                currentPoint.Y = roverPictureBox.Location.Y + speed * offsetX;
+                currentPoint.Y = roverPictureBox.Location.Y + speed * offsetY;
                 roverPictureBox.Location = new Point(currentPoint.X, currentPoint.Y);
                 roverPictureBox.Refresh();
                 roverPictureBox.Invalidate();

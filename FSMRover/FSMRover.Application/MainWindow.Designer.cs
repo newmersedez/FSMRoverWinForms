@@ -49,7 +49,7 @@
 	        this.roverPictureBox.BackColor = System.Drawing.Color.Transparent;
 	        this.roverPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
 	        this.roverPictureBox.Image = global::FSMRover.Properties.Resources.Rover;
-	        this.roverPictureBox.Location = new System.Drawing.Point(414, 407);
+	        this.roverPictureBox.Location = new System.Drawing.Point(543, 411);
 	        this.roverPictureBox.Name = "roverPictureBox";
 	        this.roverPictureBox.Size = new System.Drawing.Size(82, 78);
 	        this.roverPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -131,7 +131,7 @@
 	        this.startButton.Name = "startButton";
 	        this.startButton.Size = new System.Drawing.Size(152, 46);
 	        this.startButton.TabIndex = 12;
-	        this.startButton.Text = "Start";
+	        this.startButton.Text = "Старт";
 	        this.startButton.UseVisualStyleBackColor = false;
 	        this.startButton.Click += new System.EventHandler(this.StartButtonClicked);
 	        // 
@@ -153,8 +153,8 @@
 	        this.Controls.Add(this.roverPictureBox);
 	        this.DoubleBuffered = true;
 	        this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+	        this.Location = new System.Drawing.Point(15, 15);
 	        this.Name = "MainWindow";
-	        this.Text = "FSM Rover";
 	        ((System.ComponentModel.ISupportInitialize)(this.roverPictureBox)).EndInit();
 	        ((System.ComponentModel.ISupportInitialize)(this.chargeIcon)).EndInit();
 	        ((System.ComponentModel.ISupportInitialize)(this.memoryIcon)).EndInit();

@@ -1,22 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WindowsFormsApp1.Models.Rover;
-using WindowsFormsApp1.Models.State;
+using FSMRover.Models.Rover;
+using FSMRover.Models.State;
 
-namespace WindowsFormsApp1
+namespace FSMRover
 {
     public partial class MainWindow : Form
     {
-        private static readonly Point StartPoint = new Point(142, 278);
-        private static readonly Point DestinationPoint = new Point(800, 500);
+        private static readonly Point StartPoint = new Point(163, 144);
+        private static readonly Point ChargeBatteriesPoint = new Point(796, 150);
+        private static readonly Point FixModulesPoint = new Point(541, 52);
+        private static readonly Point CollectSoilPoint = new Point(294, 148);
+        private static readonly Point SendDataPoint = new Point(27, 182);
+        private static readonly Point MakePhotoPoint = new Point(414, 407);
+
 
         private readonly IRover _rover;
 
@@ -29,32 +28,82 @@ namespace WindowsFormsApp1
             chargeCounter.Text = _rover.Battery.ToString();
             memoryCounter.Text = _rover.Memory.ToString();
             storageCounter.Text = _rover.Storage.ToString();
-
-            // timer1.Interval = 10;
-            // timer1.Tick += new EventHandler(TimerTick);
         }
 
-        private void StartProcessing()
-        {
-            var curX = roverPictureBox.Location.X;
-            var curY = roverPictureBox.Location.Y;
-
-            var velocity = 10;
-            var offsetX = DestinationPoint.X - curX > 0 ? 1 : -1;
-            var offsetY = DestinationPoint.Y - curY > 0 ? 1 : -1;
-
-           while (curX != DestinationPoint.X && curY != DestinationPoint.Y) 
-           { 
-               roverPictureBox.Location = new Point(curX + velocity * offsetX, curY + velocity * offsetY); 
-               roverPictureBox.Refresh();
-               roverPictureBox.Invalidate(); 
-           }
-        }
-        
-        private void StartButtonClicked(object sender, EventArgs e)
+        private async void StartButtonClicked(object sender, EventArgs e)
         {
             startButton.Enabled = false;
-            StartProcessing();
+            await StartProcessing();
         }
-	}
+
+        private async Task StartProcessing()
+        {
+            await Task.Run(() =>
+            {
+                while (true)
+                {
+                    var state = _rover.Update();
+
+                    if (state == AllStates.DiscoverArea)
+                    {
+                        MoveToPoint(roverPictureBox.Location, StartPoint);
+                    }
+                    else if (state == AllStates.CollectSoil)
+                    {
+                        MoveToPoint(roverPictureBox.Location, CollectSoilPoint);
+                    }
+                    else if (state == AllStates.FixModules)
+                    {
+                        MoveToPoint(roverPictureBox.Location, FixModulesPoint);
+                    }
+                    else if (state == AllStates.ChargeBatteries)
+                    {
+                        MoveToPoint(roverPictureBox.Location, ChargeBatteriesPoint);
+                    }
+                    else if (state == AllStates.MakePhoto)
+                    {
+                        MoveToPoint(roverPictureBox.Location, MakePhotoPoint);
+                    }
+                    else if (state == AllStates.SendData)
+                    {
+                        MoveToPoint(roverPictureBox.Location, SendDataPoint);
+                    }
+
+                    chargeCounter.Text = _rover.Battery.ToString();
+                    memoryCounter.Text = _rover.Memory.ToString();
+                    storageCounter.Text = _rover.Storage.ToString();
+                }
+            });
+        }
+        
+        private void MoveToPoint(Point currentPoint, Point destinationPoint, int speed = 1)
+        {
+            var distanceX = destinationPoint.X - currentPoint.X;
+            var distanceY = destinationPoint.Y - currentPoint.Y;
+
+            var offsetX = distanceX > 0 ? 1 : -1;
+            var offsetY = distanceY > 0 ? 1 : -1;
+
+            while (distanceX != 0)
+            {
+                currentPoint.X = roverPictureBox.Location.X + speed * offsetX;
+                roverPictureBox.Location = new Point(currentPoint.X, currentPoint.Y);
+                roverPictureBox.Refresh();
+                roverPictureBox.Invalidate();
+                distanceX -= offsetX;
+            }
+            
+            while (distanceY != 0)
+            {
+                currentPoint.Y = roverPictureBox.Location.Y + speed * offsetX;
+                roverPictureBox.Location = new Point(currentPoint.X, currentPoint.Y);
+                roverPictureBox.Refresh();
+                roverPictureBox.Invalidate();
+                distanceY -= offsetY;
+            }
+
+            roverPictureBox.Refresh();
+            roverPictureBox.Invalidate();
+        }
+    }
 }

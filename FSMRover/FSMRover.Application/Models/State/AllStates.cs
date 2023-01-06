@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WindowsFormsApp1.Models.State
+namespace FSMRover.Models.State
 {
 	/// <summary>
 	/// Возможные состояния конечного автомата

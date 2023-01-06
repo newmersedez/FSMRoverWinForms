@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WindowsFormsApp1.Models.Fsm;
-using WindowsFormsApp1.Models.Rover;
+using FSMRover.Models.Fsm;
+using FSMRover.Models.Rover;
 
-namespace WindowsFormsApp1
+namespace FSMRover
 {
     static class Program
     {
@@ -17,13 +17,13 @@ namespace WindowsFormsApp1
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
+            System.Windows.Forms.Application.EnableVisualStyles();
+            System.Windows.Forms.Application.SetCompatibleTextRenderingDefault(false);
 
             var services = new ServiceCollection();
             ConfigureServices(services);
 
-            Application.Run(new MainWindow(new Rover(new Fsm())));
+            System.Windows.Forms.Application.Run(new MainWindow(new Rover(new Fsm())));
         }
 
         private static void ConfigureServices(IServiceCollection services)

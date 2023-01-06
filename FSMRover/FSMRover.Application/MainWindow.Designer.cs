@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApp1
+﻿namespace FSMRover
 {
     partial class MainWindow
     {
@@ -48,8 +48,8 @@
 	        // 
 	        this.roverPictureBox.BackColor = System.Drawing.Color.Transparent;
 	        this.roverPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-	        this.roverPictureBox.Image = global::WindowsFormsApp1.Properties.Resources.Rover;
-	        this.roverPictureBox.Location = new System.Drawing.Point(142, 278);
+	        this.roverPictureBox.Image = global::FSMRover.Properties.Resources.Rover;
+	        this.roverPictureBox.Location = new System.Drawing.Point(414, 407);
 	        this.roverPictureBox.Name = "roverPictureBox";
 	        this.roverPictureBox.Size = new System.Drawing.Size(82, 78);
 	        this.roverPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;

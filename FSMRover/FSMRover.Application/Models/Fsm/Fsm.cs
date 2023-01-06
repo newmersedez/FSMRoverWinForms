@@ -15,13 +15,13 @@ namespace WindowsFormsApp1.Models.Fsm
 		/// <summary>
 		/// Текущее состояние
 		/// </summary>
-		public ExecState CurrentState { get; set; }
+		public ActionState CurrentState { get; set; }
 
 		/// <summary>
 		/// Установить состояние
 		/// </summary>
 		/// <param name="state">Состояние</param>
-		public void SetState(ExecState state)
+		public void SetState(ActionState state)
 		{
 			CurrentState = state;
 		}
@@ -29,12 +29,14 @@ namespace WindowsFormsApp1.Models.Fsm
 		/// <summary>
 		/// Обновить состояние
 		/// </summary>
-		public void Update()
+		public AllStates Update()
 		{
 			if (CurrentState != null)
 			{
-				CurrentState();
+				return CurrentState();
 			}
+
+			return AllStates.DiscoverArea;
 		}
 	}
 }

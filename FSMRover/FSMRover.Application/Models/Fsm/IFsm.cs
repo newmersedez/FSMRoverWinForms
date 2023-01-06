@@ -11,7 +11,7 @@ namespace WindowsFormsApp1.Models.Fsm
 	/// Делегат для вызова обработчика состояния
 	/// </summary>
 	/// <returns></returns>
-	public delegate AllStates ExecState();
+	public delegate AllStates ActionState();
 
 	/// <summary>
 	/// Интерфейс конечного автомата
@@ -21,17 +21,17 @@ namespace WindowsFormsApp1.Models.Fsm
 		/// <summary>
 		/// Текущее состояние
 		/// </summary>
-		ExecState CurrentState { get; set; }
+		ActionState CurrentState { get; set; }
 
 		/// <summary>
 		/// Установить состояние
 		/// </summary>
 		/// <param name="state">Состояние</param>
-		void SetState(ExecState state);
+		void SetState(ActionState state);
 		
 		/// <summary>
 		/// Обновить состояние
 		/// </summary>
-		void Update();
+		AllStates Update();
 	}
 }

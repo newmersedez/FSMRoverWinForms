@@ -48,8 +48,20 @@ namespace WindowsFormsApp1.Models.Rover
 		AllStates ChargeBatteries();
 
 		/// <summary>
+		/// Проверить модули
+		/// </summary>
+		/// <returns></returns>
+		AllStates FixModules();
+
+		/// <summary>
 		/// Отправить данные в центр управления
 		/// </summary>
 		AllStates SendData();
+
+		/// <summary>
+		/// Обновить состояние
+		/// </summary>
+		/// <returns></returns>
+		AllStates Update();
 	}
 }

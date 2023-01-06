@@ -108,7 +108,6 @@
     <None Include="Resources\Images\RoverFix.png" />
     <None Include="Resources\Images\RoverCollectSoil.png" />
     <None Include="Resources\Images\RoverChargeBatteries.png" />
-    <None Include="Resources\Images\Red-Ball-PNG-Pic.png" />
     <None Include="Resources\Images\Rover.png" />
   </ItemGroup>
   <ItemGroup />

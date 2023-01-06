@@ -36,13 +36,13 @@ namespace FSMRover
             if (_isRunning == false)
             {
                 _isRunning = true;
-                startButton.Text = "Start";
+                startButton.Text = "Стоп";
                 await StartProcessing(); 
             }
             else
             {
                 _isRunning = false;
-                startButton.Text = "Stop";
+                startButton.Text = "Старт";
             }
         }
 

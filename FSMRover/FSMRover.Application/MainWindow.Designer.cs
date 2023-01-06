@@ -48,8 +48,8 @@
 	        // 
 	        this.roverPictureBox.BackColor = System.Drawing.Color.Transparent;
 	        this.roverPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-	        this.roverPictureBox.Image = global::FSMRover.Properties.Resources.Rover;
-	        this.roverPictureBox.Location = new System.Drawing.Point(543, 411);
+	        this.roverPictureBox.Image = global::FSMRover.Properties.Resources.DefaultRover;
+	        this.roverPictureBox.Location = new System.Drawing.Point(163, 144);
 	        this.roverPictureBox.Name = "roverPictureBox";
 	        this.roverPictureBox.Size = new System.Drawing.Size(82, 78);
 	        this.roverPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;

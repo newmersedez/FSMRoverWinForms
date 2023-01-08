@@ -12,7 +12,7 @@ namespace FSMRover
         private static readonly Point DefaultPoint = new Point(163, 144);
         private static readonly Point ChargeBatteriesPoint = new Point(796, 150);
         private static readonly Point FixModulesPoint = new Point(541, 52);
-        private static readonly Point CollectSoilPoint = new Point(294, 148);
+        private static readonly Point CollectSoilPoint = new Point(286, 408);
         private static readonly Point SendDataPoint = new Point(27, 182);
         private static readonly Point MakePhotoPoint = new Point(543, 411);
         

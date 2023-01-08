@@ -61,11 +61,11 @@
 	        this.chargeCounter.BackColor = System.Drawing.Color.Transparent;
 	        this.chargeCounter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 	        this.chargeCounter.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-	        this.chargeCounter.Location = new System.Drawing.Point(710, 16);
+	        this.chargeCounter.Location = new System.Drawing.Point(704, 16);
 	        this.chargeCounter.Name = "chargeCounter";
-	        this.chargeCounter.Size = new System.Drawing.Size(30, 30);
+	        this.chargeCounter.Size = new System.Drawing.Size(40, 30);
 	        this.chargeCounter.TabIndex = 3;
-	        this.chargeCounter.Text = "10";
+	        this.chargeCounter.Text = "100";
 	        // 
 	        // chargeIcon
 	        // 
@@ -98,7 +98,7 @@
 	        this.memoryCounter.Name = "memoryCounter";
 	        this.memoryCounter.Size = new System.Drawing.Size(30, 30);
 	        this.memoryCounter.TabIndex = 9;
-	        this.memoryCounter.Text = "1";
+	        this.memoryCounter.Text = "0";
 	        // 
 	        // storageButton
 	        // 
@@ -120,7 +120,7 @@
 	        this.storageCounter.Name = "storageCounter";
 	        this.storageCounter.Size = new System.Drawing.Size(30, 30);
 	        this.storageCounter.TabIndex = 11;
-	        this.storageCounter.Text = "1";
+	        this.storageCounter.Text = "0";
 	        // 
 	        // startButton
 	        // 

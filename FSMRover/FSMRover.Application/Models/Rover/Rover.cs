@@ -18,13 +18,15 @@ namespace FSMRover.Models.Rover
 		private int _battery;
 		private int _memory;
 		private int _storage;
-
+		
+		public AllStates CurrentState { get; set; }
 
 		public Rover(IFsm fsm)
 		{
 			_fsm = fsm ?? throw new ArgumentNullException(nameof(fsm));
 			_fsm.SetState(DiscoverArea);
-
+			CurrentState = AllStates.DiscoverArea;
+			
 			Battery = 100;
 			Storage = 0;
 			Memory = 0;
@@ -75,6 +77,8 @@ namespace FSMRover.Models.Rover
 		/// <returns></returns>
 		public AllStates DiscoverArea()
 		{
+			CurrentState = AllStates.DiscoverArea;
+			
 			if (Battery <= 20)
 			{
 				_fsm.SetState(ChargeBatteries);
@@ -101,6 +105,8 @@ namespace FSMRover.Models.Rover
 		/// </summary>
 		public AllStates ChargeBatteries()
 		{
+			CurrentState = AllStates.ChargeBatteries;
+			
 			Battery = 100;
 			_fsm.SetState(DiscoverArea);
 			return AllStates.DiscoverArea;
@@ -112,6 +118,7 @@ namespace FSMRover.Models.Rover
 		/// <returns></returns>
 		public AllStates CollectSoil()
 		{
+			CurrentState = AllStates.CollectSoil;
 			var random = new Random();
 			if (random == null) throw new ArgumentNullException(nameof(random));
 
@@ -134,6 +141,8 @@ namespace FSMRover.Models.Rover
 		/// <returns></returns>
 		public AllStates FixModules()
 		{
+			CurrentState = AllStates.FixModules;
+			
 			if (Battery <= 20 || Storage == 10 || Memory == 10)
 			{
 				Memory = 0;
@@ -153,6 +162,8 @@ namespace FSMRover.Models.Rover
 		/// <returns></returns>
 		public AllStates MakePhoto()
 		{
+			CurrentState = AllStates.MakePhoto;
+			
 			var random = new Random();
 			if (random == null) throw new ArgumentNullException(nameof(random));
 
@@ -176,6 +187,8 @@ namespace FSMRover.Models.Rover
 		/// <returns></returns>
 		public AllStates SendData()
 		{
+			CurrentState = AllStates.SendData;
+			
 			var random = new Random();
 			if (random == null) throw new ArgumentNullException(nameof(random));
 
@@ -198,8 +211,9 @@ namespace FSMRover.Models.Rover
 		/// <returns></returns>
 		public AllStates Update()
 		{
+			_fsm.Update();
 			Thread.Sleep(1000);
-			return _fsm.Update();
+			return CurrentState;
 		}
 	}
 }

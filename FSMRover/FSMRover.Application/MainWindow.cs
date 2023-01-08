@@ -52,6 +52,10 @@ namespace FSMRover
             {
                 while (_isRunning)
                 {
+                    chargeCounter.Text = _rover.Battery.ToString();
+                    memoryCounter.Text = _rover.Memory.ToString();
+                    storageCounter.Text = _rover.Storage.ToString();
+                
                     var state = _rover.Update();
 
                     roverPictureBox.Image = Properties.Resources.DefaultRover;
@@ -86,11 +90,6 @@ namespace FSMRover
                         MoveToPoint(roverPictureBox.Location, SendDataPoint);
                         roverPictureBox.Image = Properties.Resources.RoverSendData;
                     }
-
-                    chargeCounter.Text = _rover.Battery.ToString();
-                    memoryCounter.Text = _rover.Memory.ToString();
-                    storageCounter.Text = _rover.Storage.ToString();
-                    Task.Delay(1000);
                 }
             });
         }

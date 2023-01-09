@@ -102,7 +102,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\Background.png" />
     <Content Include="Resources\Images\Background.png" />
     <None Include="Resources\Images\RoverSendData.png" />
     <None Include="Resources\Images\RoverMakePhoto.png" />

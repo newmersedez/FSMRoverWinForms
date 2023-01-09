@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FSMRover.Models.State
+﻿namespace FSMRover.Models.State
 {
 	/// <summary>
 	/// Возможные состояния конечного автомата

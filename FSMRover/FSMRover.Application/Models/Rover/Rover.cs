@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using FSMRover.Models.Fsm;
 using FSMRover.Models.State;
 
@@ -79,7 +75,7 @@ namespace FSMRover.Models.Rover
 		{
 			CurrentState = AllStates.DiscoverArea;
 			
-			if (Battery <= 20)
+			if (Battery <= 10)
 			{
 				_fsm.SetState(ChargeBatteries);
 				return AllStates.ChargeBatteries;
@@ -122,7 +118,7 @@ namespace FSMRover.Models.Rover
 			var random = new Random();
 			if (random == null) throw new ArgumentNullException(nameof(random));
 
-			Storage += random.Next(1, 10);
+			Storage += random.Next(1, 5);
 			Battery -= random.Next(1, 10);
 
 			if (Memory < 10)
@@ -143,7 +139,7 @@ namespace FSMRover.Models.Rover
 		{
 			CurrentState = AllStates.FixModules;
 			
-			if (Battery <= 20 || Storage == 10 || Memory == 10)
+			if (Battery <= 5 || Storage == 10 || Memory == 10)
 			{
 				Memory = 0;
 				Storage = 0;
@@ -167,7 +163,7 @@ namespace FSMRover.Models.Rover
 			var random = new Random();
 			if (random == null) throw new ArgumentNullException(nameof(random));
 
-			Memory += 1;
+			Memory += random.Next(1, 3);
 			Battery -= random.Next(1, 5);
 
 			var signal = random.Next(0, 2);
